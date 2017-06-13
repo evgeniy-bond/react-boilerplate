@@ -1,0 +1,40 @@
+.simple_page {
+  background: #fff;
+  color: #000;
+  min-height: 0;
+  margin: 250px 10% 3em;
+  padding: 30px;
+  position: relative;
+}
+
+.chick {
+  background: url('/superglobal/chicks.png') no-repeat;
+  background-position: -1190px 0;
+  bottom: 100%;
+  left: 50%;
+  margin: 0 0 0 -111px;
+  height: 200px;
+  width: 223px;
+  position: absolute;
+}
+
+h1 {
+  color: #000;
+}
+
+.error_number {
+  font-size: 950%;
+  font-weight: bold;
+  line-height: .8;
+  margin-right: -100%;
+}
+
+.content {
+  margin-left: 19em;
+}
+
+.col {
+  position: relative;
+  float: left;
+  clear: right;
+}
