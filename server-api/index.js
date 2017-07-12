@@ -1,1 +1,1 @@
-export const DEV = 'your proxy';
+export const API = 'your proxy';

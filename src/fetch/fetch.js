@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
+import canUseDOM from '../lib/canUseDOM';
+import { API } from '../../server-api';
 
-const apiUrl = process.env.API_CLIENT_URL || window.App.apiUrl;
+let SERVER_URL;
 
 export default (url, options = {}) => {
     options = {
@@ -8,12 +10,16 @@ export default (url, options = {}) => {
         ...options,
     };
 
+    if (/api/.test(url)) {
+        SERVER_URL = API;
+    } 
+
     if (options.query) {
         url += (url.indexOf('?') === -1 ? '?' : '&') + queryParams(options.query);
         delete options.query;
     }
 
-    return fetch(apiUrl + url, options);
+    return fetch(canUseDOM() ? url : SERVER_URL + url, options)
 }
 
 function queryParams(params) {

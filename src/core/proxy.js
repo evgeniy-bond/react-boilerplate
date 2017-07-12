@@ -1,7 +1,7 @@
-import { DEV } from '../../server-api';
+import { API } from '../../server-api';
 
 export const proxyConfig = {
-  target: DEV,
+  target: API,
   changeOrigin: true,
   pathRewrite: {
     '^/spa/security-check': '/security-check',
