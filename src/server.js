@@ -15,19 +15,16 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import assets from './assets.json';
 import config from './core/config';
 import { proxyConfig } from './core/proxy';
+import favicon from 'serve-favicon';
 
 const app = express();
 
-// Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
-// user agent is not known.
-global.navigator = global.navigator || {};
-global.navigator.userAgent = global.navigator.userAgent || 'all';
-
-// Register Node.js middleware
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// app.use(favicon(__dirname + '/public/favicon.ico'));
+
 
 //proxy uncomment it if you need 
 // app.use('/spa', proxy(proxyConfig));
