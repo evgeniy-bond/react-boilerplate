@@ -29,6 +29,7 @@ const config = {
         loader: 'babel-loader',
         include: [
           path.resolve(__dirname, '../src'),
+          path.resolve(__dirname, '../node_modules'),
         ],
         query: {
           cacheDirectory: isDebug,
@@ -45,14 +46,11 @@ const config = {
               useBuiltIns: false,
               debug: false,
             }],
-            // Experimental ECMAScript proposals
-            // https://babeljs.io/docs/plugins/#presets-stage-x-experimental-presets-
+            'es2015',
+            'stage-0',
             'stage-2',
-            // JSX, Flow
-            // https://github.com/babel/babel/tree/master/packages/babel-preset-react
+            'stage-3',
             'react',
-            // Optimize React code for the production build
-            // https://github.com/thejameskyle/babel-react-optimize
             ...isDebug ? [] : ['react-optimize'],
           ],
           plugins: [
