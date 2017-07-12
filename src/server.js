@@ -51,7 +51,7 @@ app.get('*', async (req, res, next) => {
             return;
         }
 
-        const data = { ...route };
+        const data = { ...route, path: req.path, query: req.query };
         data.children = ReactDOM.renderToString(<App context={context}>{route.component}</App>);
         data.styles = [
             { id: 'css', cssText: [...css].join('') },

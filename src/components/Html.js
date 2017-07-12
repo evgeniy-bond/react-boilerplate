@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import serialize from 'serialize-javascript';
-
 import config from '../core/config';
 
 class Html extends React.Component {
@@ -22,7 +21,7 @@ class Html extends React.Component {
     };
 
     render() {
-        const { title, description, styles, scripts, app, children } = this.props;
+        const { title, description, styles, scripts, app, children, query} = this.props;
 
         return (
             <html className="no-js" lang="en">
@@ -44,7 +43,7 @@ class Html extends React.Component {
                 </head>
                 <body>
                     <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
-                    {(!this.props.query||this.props.query.nojs==undefined)&&scripts.map(script => <script key={script} src={script} />)}
+                    {(!query||query.nojs==undefined)&&scripts.map(script => <script key={script} src={script} />)}
                 </body>
             </html>
         );
