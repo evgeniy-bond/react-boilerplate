@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
 import proxy from 'http-proxy-middleware';
+import favicon from 'serve-favicon';
 import App from './components/App';
 import Html from './components/Html';
 import router from './router';
@@ -15,7 +16,7 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import assets from './assets.json';
 import config from './core/config';
 import { proxyConfig } from './core/proxy';
-import favicon from 'serve-favicon';
+import basicAuth from './lib/basicAuth';
 
 const app = express();
 
@@ -25,9 +26,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 
-
 //proxy uncomment it if you need 
 // app.use('/spa', proxy(proxyConfig));
+
+//basicAuth
+// app.use('*', basicAuth);
 
 app.get('*', async (req, res, next) => {
     try {
